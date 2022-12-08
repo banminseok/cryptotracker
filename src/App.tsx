@@ -55,7 +55,7 @@ table {
 }
 body {
   font-family: 'Noto Sans KR','Source Sans Pro', sans-serif;
-  font-weight: 300;  
+  font-weight: 600;  
   background-color:${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor};
   line-height: 1.2;
