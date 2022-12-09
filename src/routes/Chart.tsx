@@ -20,11 +20,11 @@ interface ChartProps {
   coinId: string;
 }
 
-function Chart() {
+function Chart({ coinId }: ChartProps) {
   const isDark = useRecoilValue(isDarkAtom);
 
   const { coinId: urlCoinId } = useParams<"coinId">();
-  const { coinId } = useOutletContext<ChartProps>();
+  //const { coinId } = useOutletContext<ChartProps>();
 
   const { isLoading, data } = useQuery<IHistorical[]>(
     ["ohlcv", coinId],

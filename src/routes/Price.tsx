@@ -32,8 +32,8 @@ interface ChartProps {
   coinId: string;
 }
 
-function Price() {
-  const { coinId } = useOutletContext<ChartProps>();
+function Price({ coinId }: ChartProps) {
+  //const { coinId } = useOutletContext<ChartProps>();
 
   const { isLoading, data } = useQuery(
     ["price", coinId],

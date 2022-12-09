@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import App from './App';
 import defaultRouter from './Router';
 
 
@@ -16,7 +17,7 @@ root.render(
   <React.StrictMode>
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={defaultRouter} />
+        <App />
       </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>

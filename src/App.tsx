@@ -6,6 +6,7 @@ import ToggleBtn from "./components/ToggleBtn";
 import { darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "./atom";
+import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
@@ -89,7 +90,7 @@ function App() {
           <BtnContainer>
             <ToggleBtn />
           </BtnContainer>
-          <Outlet />
+          <Router />
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </ThemeProvider>
       </HelmetProvider>

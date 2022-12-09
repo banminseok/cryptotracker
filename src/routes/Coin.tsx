@@ -5,6 +5,8 @@ import { Link, Outlet, useMatch } from "react-router-dom";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import Chart from "./Chart";
+import Price from "./Price";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -154,8 +156,8 @@ interface IPriceData {
 }
 
 function Coin() {
-  const { coinId } = useParams<"coinId">();
-  //const { coinId } = useParams() as RouteParams;
+  //const { coinId } = useParams<"coinId">();
+  const { coinId } = useParams() as RouteParams;
   const { state } = useLocation();
   //const location = useLocation();
   //const { state : {name} } = useLocation();
@@ -225,10 +227,7 @@ function Coin() {
               <Chart />
             </Route>
           </Switch> */}
-          {/* <Routes>
-            <Route path="chart" element={<Chart />} />
-            <Route path="price" element={<Price />} />
-          </ Routes> */}
+
           <Tabs>
             <Tab isActive={chartMatch !== null}>
               <Link to="./chart">Chart</Link>
@@ -237,7 +236,11 @@ function Coin() {
               <Link to="./price">Price</Link>
             </Tab>
           </Tabs>
-          <Outlet context={{ coinId }} />
+          <Routes>
+            <Route path="chart" element={<Chart coinId={coinId} />} />
+            <Route path="price" element={<Price coinId={coinId} />} />
+          </ Routes>
+          {/* <Outlet context={{ coinId }} /> */}
         </>
       )
       }
