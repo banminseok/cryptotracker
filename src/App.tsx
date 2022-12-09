@@ -90,7 +90,7 @@ function App() {
             <ToggleBtn />
           </BtnContainer>
           <Outlet />
-          <ReactQueryDevtools initialIsOpen={false} />
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </ThemeProvider>
       </HelmetProvider>
     </>
