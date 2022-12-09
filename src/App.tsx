@@ -1,7 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { HelmetProvider } from "react-helmet-async";
+import ToggleBtn from "./components/ToggleBtn";
+import { darkTheme, lightTheme } from './theme';
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atom";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
@@ -67,13 +71,27 @@ a {
   color:inherit;
 }
 `
+
+const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+`;
 function App() {
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       <HelmetProvider >
-        <GlobalStyle />
-        <Outlet />
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+          <GlobalStyle />
+          <BtnContainer>
+            <ToggleBtn />
+          </BtnContainer>
+          <Outlet />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </ThemeProvider>
       </HelmetProvider>
     </>
   );

@@ -32,7 +32,11 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
 `;
-
+const BtnContainer = styled.div`
+  width : 100%;
+  text-align:right;
+  padding:10px;
+`;
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
@@ -173,12 +177,17 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
+
       <Header>
+
         {loading ? "" : (
           <Img src={`https://coinicons-api.vercel.app/api/icon/${infoData?.symbol.toLowerCase()}`} />
         )}
         <Title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</Title>
       </Header>
+      <BtnContainer>
+        <Link to={`/`}>&larr;뒤로가기</Link>
+      </BtnContainer>
       {loading ? (
         <Loader>Loading...</Loader>
       ) : (
