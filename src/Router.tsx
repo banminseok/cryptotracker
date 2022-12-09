@@ -6,9 +6,11 @@ import Coins from "./routes/Coins";
 import NotFound from "./routes/NotFound";
 import Price from "./routes/Price";
 
+const BASE_URL = process.env.PUBLIC_URL;
+
 const defaultRouter = createBrowserRouter([
   {
-    path: "/",
+    path: BASE_URL + "/",
     element: <App />,
     children: [
       {
